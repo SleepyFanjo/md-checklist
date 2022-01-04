@@ -2,22 +2,26 @@ import './App.css';
 import markdown from './assets/checklist.example.md';
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw';
-import usePaginatedMarkdown from './hooks/usePaginatedMarkdown';
+import useSplitedMarkdown from './hooks/useSplitedMarkdown';
+
+import { ItemCardContainer, ItemCard } from './components/ItemCard'
 
 function App() {
-  const [ markdownData, next, previous ] = usePaginatedMarkdown(markdown)
+  const [ items, checkItem, unCheckItem ] = useSplitedMarkdown(markdown);
 
   return (
     <div className="App">
-      <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-        {markdownData}
-      </ReactMarkdown>
+      <ItemCardContainer items={items}>
       {
-        previous && <button onClick={previous}>Précédent</button>
+        items && items.map((item, index) => (
+          <ItemCard key={index} checked={item.checked} checkItem={() => checkItem(index)} unCheckItem={() => unCheckItem(index)}>
+            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+              {item.md}
+            </ReactMarkdown>
+          </ItemCard>
+        ))
       }
-      {
-        next && <button onClick={next}>Suivant</button>
-      }
+      </ItemCardContainer>
     </div>
   );
 }

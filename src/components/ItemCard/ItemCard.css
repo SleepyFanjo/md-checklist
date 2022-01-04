@@ -1,0 +1,51 @@
+.ItemCard {
+  background: #EAD7E0;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+.ItemCardContainer {
+  margin: 20px 20px;
+  height: calc(100% - 40px);
+  background: #FEE5C3;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ItemCardContainer__header {
+  background: #F39005;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 85px;
+}
+
+.ItemCardContainer__headerTitle {
+  margin: 0 20px;
+  color: #fff;
+}
+
+.ItemCardContainer__headerCount {
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+  white-space: nowrap;
+}
+
+img.ItemCardContainer__headerIcon {
+  height: 45px;
+}
+
+.ItemCardContainer__headerCount {
+  color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.ItemCardContainer__items {
+  padding: 0 20px;
+  overflow: auto;
+  height: calc(100% - 85px);
+}
